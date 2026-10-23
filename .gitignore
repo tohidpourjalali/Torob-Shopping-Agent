@@ -1,0 +1,42 @@
+# ── متغیرهای محیطی و کلیدها ───────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ── داده‌ها (حجیم؛ با اسکریپت import بازتولید می‌شوند) ────────────────────
+data/
+*.csv
+*.zip
+*.db
+*.db-shm
+*.db-wal
+*.sqlite3
+
+# ── پایتون ────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# ── Node / Next.js ────────────────────────────────────────────────────────
+node_modules/
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+npm-debug.log*
+.eslintcache
+
+# ── ابزارها و سیستمی ──────────────────────────────────────────────────────
+.DS_Store
+.idea/
+.vscode/
+*.log

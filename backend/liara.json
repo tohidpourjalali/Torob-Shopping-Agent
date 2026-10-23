@@ -1,0 +1,22 @@
+{
+  "app": "torob-api",
+  "platform": "docker",
+  "port": 8000,
+  "build": { "location": "iran" },
+  "healthCheck": {
+    "command": "CMD curl --fail http://localhost:8000/api/health || exit 1",
+    "interval": 30,
+    "timeout": 15,
+    "retries": 3,
+    "startPeriod": 20
+  },
+  "disks": [
+    { "name": "torob-data", "mountTo": "/data" }
+  ],
+  "envs": {
+    "DATASET_DIR": "/data",
+    "DATABASE_URL": "sqlite:////data/torob_agent.db",
+    "APP_ENV": "production",
+    "FRONTEND_ORIGINS": "https://torob-web.liara.run"
+  }
+}

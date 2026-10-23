@@ -1,0 +1,244 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────────────────────────────
+   فونت کلمه (Kalameh)
+   فایل‌های woff2 سبک‌شده در public/fonts/kalameh/
+   font-display: swap → متن با فونت جای‌گزین دیده می‌شود و بعد کلمه می‌آید
+   (بدون این، متن تا دانلود فونت نامرئی می‌ماند)
+   ───────────────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: "Kalameh";
+  src: url("/fonts/kalameh/kalameh-300.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F, U+2010-2027;
+}
+@font-face {
+  font-family: "Kalameh";
+  src: url("/fonts/kalameh/kalameh-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F, U+2010-2027;
+}
+@font-face {
+  font-family: "Kalameh";
+  src: url("/fonts/kalameh/kalameh-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F, U+2010-2027;
+}
+@font-face {
+  font-family: "Kalameh";
+  src: url("/fonts/kalameh/kalameh-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F, U+2010-2027;
+}
+@font-face {
+  font-family: "Kalameh";
+  src: url("/fonts/kalameh/kalameh-800.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F, U+2010-2027;
+}
+@font-face {
+  font-family: "Kalameh";
+  src: url("/fonts/kalameh/kalameh-900.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F, U+2010-2027;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   فونت جای‌گزین Vazirmatn (مجوز OFL — بدون محدودیت تجاری)
+   فقط وقتی دانلود می‌شود که کلمه در دسترس نباشد یا گلیف نداشته باشد.
+   وزن‌های ۳۰۰/۸۰۰/۹۰۰ به نزدیک‌ترین وزن موجود نگاشت می‌شوند.
+   ───────────────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/vazirmatn/vazirmatn-400.woff2") format("woff2");
+  font-weight: 300 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F, U+2010-2027;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/vazirmatn/vazirmatn-700.woff2") format("woff2");
+  font-weight: 600 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0600-06FF, U+0750-077F, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F, U+2010-2027;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.75rem;
+
+    /* تن‌های نرم و متمایز برای جعبه‌ها (روشن) — اشباع پایین، کنتراست کافی */
+    --tone-blue: 214 95% 96%;
+    --tone-blue-border: 214 90% 88%;
+    --tone-blue-ink: 217 80% 32%;
+    --tone-amber: 43 96% 94%;
+    --tone-amber-border: 41 92% 84%;
+    --tone-amber-ink: 32 80% 30%;
+    --tone-emerald: 152 60% 94%;
+    --tone-emerald-border: 152 55% 84%;
+    --tone-emerald-ink: 158 74% 22%;
+    --tone-violet: 262 70% 96%;
+    --tone-violet-border: 262 60% 88%;
+    --tone-violet-ink: 264 62% 36%;
+    --tone-rose: 352 85% 96%;
+    --tone-rose-border: 352 75% 88%;
+    --tone-rose-ink: 348 70% 34%;
+    --tone-slate: 215 30% 96%;
+    --tone-slate-border: 215 25% 88%;
+    --tone-slate-ink: 218 30% 30%;
+    --surface-1: 210 40% 99%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+
+    /* تن‌های نرم (تاریک): همان خانوادهٔ رنگ، روشنایی پایین و اشباع کم */
+    --tone-blue: 217 55% 15%;
+    --tone-blue-border: 217 50% 26%;
+    --tone-blue-ink: 213 90% 82%;
+    --tone-amber: 35 45% 14%;
+    --tone-amber-border: 35 45% 26%;
+    --tone-amber-ink: 43 95% 78%;
+    --tone-emerald: 158 45% 13%;
+    --tone-emerald-border: 158 40% 24%;
+    --tone-emerald-ink: 152 65% 78%;
+    --tone-violet: 264 40% 17%;
+    --tone-violet-border: 264 35% 28%;
+    --tone-violet-ink: 262 85% 84%;
+    --tone-rose: 348 45% 16%;
+    --tone-rose-border: 348 40% 27%;
+    --tone-rose-ink: 352 90% 84%;
+    --tone-slate: 217 30% 16%;
+    --tone-slate-border: 217 25% 27%;
+    --tone-slate-ink: 214 25% 80%;
+    --surface-1: 222 47% 8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Kalameh", "Vazirmatn", "Sahel", Tahoma, system-ui, sans-serif;
+    font-variant-numeric: normal;
+    direction: rtl;
+    text-align: right;
+  }
+  html[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+  }
+  /* Fixed scrollbar width for RTL consistency */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground));
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    @apply mx-auto px-4;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────
+   جعبه‌های «تن نرم» — رنگ ملایم ولی واضح، در هر دو تم
+   استفاده: <div className="tone tone-blue"> یا tone-blue به‌تنهایی
+   ───────────────────────────────────────────────────────────────────── */
+@layer components {
+  .tone {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: var(--radius);
+  }
+  .tone-slate   { background-color: hsl(var(--tone-slate));   border-color: hsl(var(--tone-slate-border));   color: hsl(var(--tone-slate-ink)); }
+  .tone-blue    { background-color: hsl(var(--tone-blue));    border-color: hsl(var(--tone-blue-border));    color: hsl(var(--tone-blue-ink)); }
+  .tone-amber   { background-color: hsl(var(--tone-amber));   border-color: hsl(var(--tone-amber-border));   color: hsl(var(--tone-amber-ink)); }
+  .tone-emerald { background-color: hsl(var(--tone-emerald)); border-color: hsl(var(--tone-emerald-border)); color: hsl(var(--tone-emerald-ink)); }
+  .tone-violet  { background-color: hsl(var(--tone-violet));  border-color: hsl(var(--tone-violet-border));  color: hsl(var(--tone-violet-ink)); }
+  .tone-rose    { background-color: hsl(var(--tone-rose));    border-color: hsl(var(--tone-rose-border));    color: hsl(var(--tone-rose-ink)); }
+
+  /* پس‌زمینهٔ صفحه: گرادیان بسیار ملایم، در تاریک هم دیده می‌شود */
+  .app-bg {
+    background-image:
+      radial-gradient(60rem 30rem at 100% -10%, hsl(var(--tone-blue) / 0.55), transparent 60%),
+      radial-gradient(50rem 25rem at 0% 0%, hsl(var(--tone-violet) / 0.35), transparent 55%);
+    background-repeat: no-repeat;
+  }
+
+  /* کارت شیشه‌ای سبک برای بخش‌های روی گرادیان */
+  .surface {
+    background-color: hsl(var(--card) / 0.92);
+    backdrop-filter: blur(6px);
+  }
+}

@@ -1,0 +1,26 @@
+# نرمال‌سازی پایان خطوط: همکاری بین ویندوز/مک/لینوکس بدون دیف‌های توهمی
+* text=auto eol=lf
+
+# ── فایل‌های دودویی (بدون تبدیل، بدون دیف متنی) ─────────────────────────────
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.woff2 binary
+*.ttf   binary
+*.ico   binary
+*.zip   binary
+
+# ── زبان‌ها و ابزارها ──────────────────────────────────────────────────────
+*.py     text diff=python
+*.ts     text
+*.tsx    text
+*.js     text
+*.json   text
+*.md     text
+*.yml    text
+*.yaml   text
+Dockerfile text
+Makefile   text
+
+# فایل قفل وابستگی‌ها را در دیف‌های گیت‌هاب بازنشانی نکن
+package-lock.json -diff linguist-generated=true

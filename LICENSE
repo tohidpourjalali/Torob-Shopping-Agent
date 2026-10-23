@@ -1,0 +1,37 @@
+MIT License
+
+Copyright (c) 2026 <YOUR NAME OR ORGANIZATION>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## استثناها — این مجوز شامل این موارد نیست
+
+این مجوز فقط برای **کد این مخزن** است. موارد زیر مجوز جداگانه دارند:
+
+1. **فونت کلمه (Kalameh)** — نرم‌افزار تجاری fontiran.com است و **در این
+   مجوز نیست**. فایل‌های `frontend/public/fonts/kalameh/*.woff2` برای نمایش
+   دمو در مخزن آمده‌اند؛ برای استفاده/توزیع عمومی باید مجوز fontiran خریداری
+   شود یا فونت با یک جانشین آزاد (Vazirmatn با مجوز OFL که همین حالا هم در
+   `frontend/public/fonts/vazirmatn/` هست) جای‌گزین شود. جزئیات:
+   `docs/known-issues.md` بخش ۶.
+2. **دیتاست (shops.csv / products.csv / offers.csv)** — داده ترب است، در این
+   مخزن **نیست** (در `.gitignore`) و این مجوز به آن تعمیم داده نمی‌شود.
+3. **فونت Vazirmatn** — مجوز SIL Open Font License 1.1.

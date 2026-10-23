@@ -1,0 +1,89 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Torob In-Person Shopping Agent — پشته کامل
+#
+#   docker compose up --build
+#   docker compose run --rm backend python scripts/import_csv.py   # یک‌بار
+#
+# نکته: دیتاست CSV در ایمیج نیست. مسیر پوشه دیتاست با DATASET_HOST_DIR تنظیم
+# می‌شود (پیش‌فرض: ./data). فایل‌های shops.csv / products.csv / offers.csv
+# باید آنجا باشند. حجم تقریبی: ۲۷۳ مگابایت CSV، ~۵۰۰ مگابایت دیتابیس.
+# ─────────────────────────────────────────────────────────────────────────────
+name: torob-agent
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: torob-agent-backend:1.0.0
+    container_name: torob-backend
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: ${DATABASE_URL:-sqlite:////data/torob_agent.db}
+      DATASET_DIR: /data
+      APP_ENV: ${APP_ENV:-production}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      IMPORT_BATCH_SIZE: ${IMPORT_BATCH_SIZE:-10000}
+    volumes:
+      # دیتاست + فایل دیتابیس SQLite روی هاست می‌مانند
+      - ${DATASET_HOST_DIR:-./data}:/data
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8000/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        # آدرس API در مرورگر: نسبی، پس از پروکسی Next.js استفاده می‌شود
+        NEXT_PUBLIC_API_BASE: /api
+    image: torob-agent-frontend:1.0.0
+    container_name: torob-frontend
+    restart: unless-stopped
+    environment:
+      # فرانت‌اند سمت سرور، بک‌اند را با نام سرویس صدا می‌زند
+      BACKEND_INTERNAL_URL: http://backend:8000
+      NODE_ENV: production
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test:
+        ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  # پروفایل اختیاری: PostgreSQL به‌جای SQLite
+  #   docker compose --profile postgres up
+  #   DATABASE_URL=postgresql+psycopg2://torob:torob@db:5432/torob
+  db:
+    image: postgres:16-alpine
+    container_name: torob-db
+    profiles: ["postgres"]
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-torob}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-torob}
+      POSTGRES_DB: ${POSTGRES_DB:-torob}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-torob}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:

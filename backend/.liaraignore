@@ -1,0 +1,11 @@
+# چیزی که نباید به سرور build برود (حجم آپلود و زمان build)
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+*.db
+*.sqlite3
+data/
+dataset/
+.env
